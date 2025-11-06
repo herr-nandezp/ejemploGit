@@ -4,17 +4,19 @@
  */
 package ejemplogit;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
  */
 public class mainFrm extends javax.swing.JFrame {
     
+    private String nombre = "";
+    private String apellido = "";
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(mainFrm.class.getName());
 
-    /**
-     * Creates new form mainFrm
-     */
     public mainFrm() {
         initComponents();
     }
@@ -59,6 +61,11 @@ public class mainFrm extends javax.swing.JFrame {
         });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,11 +119,13 @@ public class mainFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        
-        System.out.println (nombre + apellido);
+        this.nombre = txtNombre.getText();
+        this.apellido = txtApellido.getText();
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        JOptionPane.showConfirmDialog(btnMostrar, "Datos de la persona:\nNombres: " + nombre + "\nApellidos: " + apellido);
+    }//GEN-LAST:event_btnMostrarActionPerformed
 
     /**
      * @param args the command line arguments
